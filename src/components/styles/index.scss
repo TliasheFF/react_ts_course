@@ -1,0 +1,12 @@
+html,
+body {
+    margin: 0;
+}
+
+.grid_container {
+    display: grid;
+    grid-template-columns: repeat(2, 400px);
+    gap: 20px;
+    justify-content: center;
+    margin: 10px 0;
+}
