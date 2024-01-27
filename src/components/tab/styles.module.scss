@@ -1,0 +1,7 @@
+.tabDefault {
+    display: none;
+
+    &.tabActive {
+        display: block;
+    }
+}

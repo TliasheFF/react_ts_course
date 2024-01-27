@@ -1,18 +1,13 @@
-import { TReviews } from "../../constants/mocks-interface";
+import { IReview } from "../../constants/mocks-interface";
 
 interface Props {
-  reviews: TReviews;
+  review: IReview;
 }
 
-export const Review = ({ reviews }: Props) => {
+export const Review = ({ review }: Props) => {
   return (
-    <>
-      <h3>Отзывы:</h3>
-      <ul>
-        {reviews.map((item) => (
-          <li key={item.id}>{item.text}</li>
-        ))}
-      </ul>
-    </>
+    <div>
+      <div>{review.text}</div>
+    </div>
   );
 };

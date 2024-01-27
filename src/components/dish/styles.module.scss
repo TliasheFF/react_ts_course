@@ -1,0 +1,9 @@
+.dashButton {
+    margin-right: 5px;
+    margin-left: 0;
+
+    &:last-child {
+        margin-right: 0;
+        margin-left: 5px;
+    }
+}
