@@ -9,7 +9,7 @@ export interface IRestaurant {
 
 export type TMenu = Array<IMenu>;
 
-interface IMenu {
+export interface IMenu {
   id: string;
   name: string;
   price: number;
@@ -18,7 +18,7 @@ interface IMenu {
 
 export type TReviews = Array<IReview>;
 
-interface IReview {
+export interface IReview {
   id: string;
   user: string;
   text: string;

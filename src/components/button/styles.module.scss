@@ -1,0 +1,31 @@
+.root {
+    border: 1px solid gray;
+    border-radius: 4px;
+    background: SkyBlue;
+    cursor: pointer;
+
+    &:hover {
+        background: rgb(1, 163, 218);
+    }
+
+    &:active {
+        background: rgb(0, 123, 255);
+    }
+
+    &:disabled {
+        background: gray;
+        cursor: not-allowed
+    }
+}
+
+.s {
+    font-size: 12px;
+}
+
+.m {
+    font-size: 14px;
+}
+
+.l {
+    font-size: 20px;
+}
