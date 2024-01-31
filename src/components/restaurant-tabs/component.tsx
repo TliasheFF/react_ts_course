@@ -9,8 +9,6 @@ type Props = {
 };
 
 export const RestaurantTabs: FC<Props> = ({ restaurants, onSelect }) => {
-  console.log(onSelect);
-
   return (
     <div className={styles.root}>
       {restaurants.map((restaurant) => (
