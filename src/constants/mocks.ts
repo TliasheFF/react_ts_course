@@ -1,4 +1,4 @@
-import type { TRestaurants } from "../constants/mocks-interface";
+import type { TRestaurants } from "./mocks-types";
 
 export const restaurants: TRestaurants = [
     {
