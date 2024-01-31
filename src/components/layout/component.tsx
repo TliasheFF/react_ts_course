@@ -1,15 +1,15 @@
 import { Header } from "../header/component";
 import { Footer } from "../footer/component";
-import { ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
 
 interface Props {
-  children?: ReactNode;
+  children: ReactNode;
   className?: string;
 }
 
-export const Layout = ({ children, className }: Props) => {
+export const Layout: FC<Props> = ({ children, className }) => {
   return (
     <div className={styles.root}>
       <Header />

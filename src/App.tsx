@@ -1,12 +1,12 @@
+import { FC } from "react";
 import { Layout } from "./components/layout/component";
-import { Tabs } from "./components/tabs/component";
-import { restaurants } from "./constants/mocks";
+import { RestaurantPage } from "./components/pages/restaurant-page/component";
 
-export const App = () => {
+export const App: FC = () => {
   return (
     <Layout className="layout">
       <div className="container">
-        <Tabs restaurants={restaurants} />
+        <RestaurantPage />
       </div>
     </Layout>
   );

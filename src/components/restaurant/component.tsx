@@ -1,21 +1,16 @@
 import styles from "./styles.module.scss";
-import { IRestaurant } from "../../constants/mocks-interface";
+import { TRestaurant } from "../../constants/mocks-types";
 import { Menu } from "../menu/component";
 import { Reviews } from "../reviews/component";
-import classNames from "classnames";
+import { FC } from "react";
 
 interface Props {
-  restaurant: IRestaurant;
-  activeTab: string | number;
-  className: {
-    tabActive: string;
-    tabDefault: string;
-  };
+  restaurant: TRestaurant;
 }
 
-export const Restaurant = ({ restaurant, activeTab, className }: Props) => {
+export const Restaurant: FC<Props> = ({ restaurant }) => {
   return (
-    <div className={classNames(styles.root, activeTab === restaurant.id ? className.tabActive : className.tabDefault)}>
+    <div className={styles.root}>
       <h2 className={styles.restaurant_name}>{restaurant.name}</h2>
       <h3>Меню:</h3>
       <Menu className={styles.restaurant_menu} menu={restaurant.menu} />

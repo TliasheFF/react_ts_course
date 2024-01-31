@@ -1,20 +1,16 @@
-import { TRestaurants } from "../../constants/mocks-interface";
+import { FC } from "react";
+import { TRestaurants } from "../../constants/mocks-types";
 import { Restaurant } from "../restaurant/component";
 
 interface Props {
   restaurants: TRestaurants;
-  activeTab: string | number;
-  className: {
-    tabActive: string;
-    tabDefault: string;
-  };
 }
 
-export const Restaurants = ({ restaurants, activeTab, className }: Props) => {
+export const Restaurants: FC<Props> = ({ restaurants }) => {
   return (
     <div>
       {restaurants.map((restaurant) => (
-        <Restaurant className={className} activeTab={activeTab} restaurant={restaurant} key={restaurant.id} />
+        <Restaurant restaurant={restaurant} key={restaurant.id} />
       ))}
     </div>
   );

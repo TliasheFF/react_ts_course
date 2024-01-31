@@ -1,10 +1,11 @@
-import { IReview } from "../../constants/mocks-interface";
+import { FC } from "react";
+import { TReview } from "../../constants/mocks-types";
 
 interface Props {
-  review: IReview;
+  review: TReview;
 }
 
-export const Review = ({ review }: Props) => {
+export const Review: FC<Props> = ({ review }) => {
   return (
     <div>
       <div>{review.text}</div>

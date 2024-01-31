@@ -1,21 +1,16 @@
-import { TRestaurants } from "../../constants/mocks-interface";
-import { Restaurants } from "../restaurants/component";
+import { FC } from "react";
+import { Button } from "../button/component";
 import styles from "./styles.module.scss";
 
-interface Props {
-  restaurants: TRestaurants;
-  activeTab: string | number;
-}
+type Props = {
+  title: string;
+  onClick: () => void;
+};
 
-export const Tab = ({ restaurants, activeTab }: Props) => {
-  const className = {
-    tabActive: styles.tabActive,
-    tabDefault: styles.tabDefault,
-  };
-
+export const Tab: FC<Props> = ({ title, onClick }) => {
   return (
-    <div>
-      <Restaurants className={className} activeTab={activeTab} restaurants={restaurants} />
-    </div>
+    <Button className={styles.tabsButton} size="l" onClick={onClick}>
+      {title}
+    </Button>
   );
 };
