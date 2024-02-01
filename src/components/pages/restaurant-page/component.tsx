@@ -13,7 +13,7 @@ export const RestaurantPage: FC = () => {
   return (
     <div className={styles.root}>
       <RestaurantTabs restaurants={restaurants} onSelect={setActiveRestaurantId}></RestaurantTabs>
-      {activeRestaurant && <Restaurant restaurant={activeRestaurant} className={styles.restaurant} />}
+      {activeRestaurant && <Restaurant restaurant={activeRestaurant} className={styles.restaurant} key={activeRestaurant.id} />}
     </div>
   );
 };

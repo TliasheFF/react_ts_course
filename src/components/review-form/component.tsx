@@ -39,8 +39,6 @@ interface Props {
 export const ReviewForm: FC<Props> = ({ className }) => {
   const [form, dispatch] = useReducer(reducer, INITIAL_VALUES);
 
-  console.log(form);
-
   return (
     <div className={classNames(styles.root, className)}>
       <div className={styles.formField}>
