@@ -43,36 +43,34 @@ export const AuthModal: FC<Props> = ({ onLogin, onClose }) => {
   }
 
   return (
-    <div>
-      <div className={styles.root}>
-        <div className={styles.formField}>
-          <label htmlFor="fullName">Your name:</label>
-          <input
-            id="fullName"
-            type="text"
-            value={fullName}
-            onChange={(event) => dispatch({ type: "setFullName", payload: event.target.value })}
-          ></input>
-        </div>
+    <div className={styles.root}>
+      <div className={styles.formField}>
+        <label htmlFor="fullName">Your name:</label>
+        <input
+          id="fullName"
+          type="text"
+          value={fullName}
+          onChange={(event) => dispatch({ type: "setFullName", payload: event.target.value })}
+        ></input>
+      </div>
 
-        <div className={styles.formField}>
-          <label htmlFor="fullName">E-mail:</label>
-          <input
-            id="fullName"
-            type="text"
-            value={mail}
-            onChange={(event) => dispatch({ type: "setMail", payload: event.target.value })}
-          ></input>
-        </div>
+      <div className={styles.formField}>
+        <label htmlFor="fullName">E-mail:</label>
+        <input
+          id="fullName"
+          type="text"
+          value={mail}
+          onChange={(event) => dispatch({ type: "setMail", payload: event.target.value })}
+        ></input>
+      </div>
 
-        <div className={styles.modalButtons}>
-          <Button onClick={fullName.length && mail.length ? onLogin : () => {}} size="s">
-            OK
-          </Button>
-          <Button onClick={onClose} size="s">
-            Cancel
-          </Button>
-        </div>
+      <div className={styles.modalButtons}>
+        <Button onClick={fullName.length && mail.length ? onLogin : () => {}} size="s">
+          OK
+        </Button>
+        <Button onClick={onClose} size="s">
+          Cancel
+        </Button>
       </div>
     </div>
   );
