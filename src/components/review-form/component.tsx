@@ -1,21 +1,17 @@
-import { FC, useReducer } from "react";
+import { FC, useContext, useReducer } from "react";
 import styles from "./styles.module.scss";
-import { Action, InitialValues } from "../../constants/restaurant-reducer-types";
+import { InitialValues, ReviewFormAction } from "../../constants/restaurant-reducer-types";
 import classNames from "classnames";
+import { UserContext } from "../contexts/user";
+import { AuthUsers } from "../../constants/auth-user";
 
 const INITIAL_VALUES: InitialValues = {
-  name: "",
   text: "",
   rating: 0,
 };
 
-const reducer = (state: InitialValues, { type, payload }: Action): InitialValues => {
+const reducer = (state: InitialValues, { type, payload }: ReviewFormAction): InitialValues => {
   switch (type) {
-    case "setName":
-      return {
-        ...INITIAL_VALUES,
-        name: payload,
-      };
     case "setText":
       return {
         ...state,
@@ -38,18 +34,13 @@ interface Props {
 
 export const ReviewForm: FC<Props> = ({ className }) => {
   const [form, dispatch] = useReducer(reducer, INITIAL_VALUES);
+  const { fullName } = useContext<AuthUsers>(UserContext);
 
   return (
     <div className={classNames(styles.root, className)}>
-      <div className={styles.formField}>
-        <label htmlFor="name">Name:</label>
-        <input
-          id="name"
-          type="text"
-          value={form.name}
-          onChange={(event) => dispatch({ type: "setName", payload: event.target.value })}
-        />
-      </div>
+      <p>
+        <span>Name:</span> {fullName}
+      </p>
       <div className={styles.formField}>
         <label htmlFor="text">Text:</label>
         <input

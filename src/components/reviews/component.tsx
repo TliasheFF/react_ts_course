@@ -1,14 +1,18 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { TReviews } from "../../constants/mocks-types";
 import { Review } from "../review/component";
 import { ReviewForm } from "../review-form/component";
 import styles from "./styles.module.scss";
+import { UserContext } from "../contexts/user";
+import { AuthUsers } from "../../constants/auth-user";
 
 interface Props {
   reviews: TReviews;
 }
 
 export const Reviews: FC<Props> = ({ reviews }) => {
+  const { authorized } = useContext<AuthUsers>(UserContext);
+
   return (
     <div>
       <ul>
@@ -18,10 +22,12 @@ export const Reviews: FC<Props> = ({ reviews }) => {
           </li>
         ))}
       </ul>
-      <div>
-        <hr />
-        <ReviewForm className={styles.reviews_form} />
-      </div>
+      {authorized && (
+        <div>
+          <hr />
+          <ReviewForm className={styles.review_form} />
+        </div>
+      )}
     </div>
   );
 };

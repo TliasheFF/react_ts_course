@@ -1,0 +1,24 @@
+.root {
+    position: fixed;
+    top: 65%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 2px 2px 5px gray;
+    background: white;
+}
+
+.formField {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    padding-top: 5px;
+}
+
+.modalButtons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 10px;
+}

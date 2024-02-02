@@ -2,6 +2,15 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    &>p {
+        margin: 0;
+
+        &>span {
+            font-weight: bold;
+            color: rgb(97, 97, 97)
+        }
+    }
 }
 
 .formField {
