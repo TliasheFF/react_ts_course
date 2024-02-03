@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const Reviews: FC<Props> = ({ reviews }) => {
-  const { authorized } = useContext<AuthUsers>(UserContext);
+  const { fullName } = useContext<AuthUsers>(UserContext);
 
   return (
     <div>
@@ -22,7 +22,7 @@ export const Reviews: FC<Props> = ({ reviews }) => {
           </li>
         ))}
       </ul>
-      {authorized && (
+      {fullName && (
         <div>
           <hr />
           <ReviewForm className={styles.review_form} />

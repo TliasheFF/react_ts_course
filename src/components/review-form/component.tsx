@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import { InitialValues, ReviewFormAction } from "../../constants/restaurant-reducer-types";
 import classNames from "classnames";
 import { UserContext } from "../contexts/user";
-import { AuthUsers } from "../../constants/auth-user";
+import { AuthUser } from "../../constants/auth-user";
 
 const INITIAL_VALUES: InitialValues = {
   text: "",
@@ -34,7 +34,7 @@ interface Props {
 
 export const ReviewForm: FC<Props> = ({ className }) => {
   const [form, dispatch] = useReducer(reducer, INITIAL_VALUES);
-  const { fullName } = useContext<AuthUsers>(UserContext);
+  const { fullName } = useContext<AuthUser>(UserContext);
 
   return (
     <div className={classNames(styles.root, className)}>

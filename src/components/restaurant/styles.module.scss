@@ -2,13 +2,17 @@
     padding: 5px;
     border: 2px solid grey;
     border-radius: 8px;
+
+    &>h3 {
+        font-family:'Times New Roman', Times, serif
+    }
 }
 
 .restaurant_name {
     margin: 0;
+    font-family:'Times New Roman', Times, serif;
     font-size: 30px;
     text-align: center;
-    text-decoration: underline;
 }
 
 .restaurant_menu {

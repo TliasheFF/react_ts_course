@@ -1,17 +1,9 @@
-export type AuthUsers = {
+export type AuthUser = {
     fullName: string;
     mail: string;
-    authorized: boolean;
 }
 
-export const USER_INITIAL_STATE: AuthUsers = {
+export const USER_INITIAL_STATE: AuthUser = {
         fullName: "",
         mail: "",
-        authorized: false,
     }
-
-export const authorizedUser: AuthUsers = {
-    fullName: "",
-    mail: "",
-    authorized: false,
-}

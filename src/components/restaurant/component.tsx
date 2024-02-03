@@ -14,9 +14,9 @@ export const Restaurant: FC<Props> = ({ restaurant, className }) => {
   return (
     <div className={classNames(styles.root, className)}>
       <h2 className={styles.restaurant_name}>{restaurant.name}</h2>
-      <h3>Меню:</h3>
+      <h3>Menu:</h3>
       <Menu className={styles.restaurant_menu} menu={restaurant.menu} />
-      <h3>Отзывы:</h3>
+      <h3>Reviews:</h3>
       <Reviews reviews={restaurant.reviews} />
     </div>
   );

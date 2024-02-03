@@ -1,8 +1,8 @@
 import { FC, useReducer } from "react";
 import styles from "./styles.module.scss";
 import { Button } from "../button/component";
-import { authorizedUser } from "../../constants/auth-user";
 import { AuthAction, UserInitialValue } from "../../constants/auth_reducer_types";
+import { AuthUser } from "../../constants/auth-user";
 
 const USER_INITIAL_VALUES: UserInitialValue = {
   fullName: "",
@@ -28,7 +28,7 @@ const reducer = (state: UserInitialValue, { type, payload }: AuthAction): UserIn
 };
 
 type Props = {
-  onLogin: () => void;
+  onLogin: (authUser: AuthUser) => void;
   onClose: () => void;
 };
 
@@ -36,41 +36,42 @@ export const AuthModal: FC<Props> = ({ onLogin, onClose }) => {
   const [form, dispatch] = useReducer(reducer, USER_INITIAL_VALUES);
   const { fullName, mail } = form;
 
-  if (fullName.length > 0 && mail.length > 0) {
-    authorizedUser.authorized = true;
-    authorizedUser.fullName = fullName;
-    authorizedUser.mail = mail;
-  }
-
   return (
-    <div className={styles.root}>
-      <div className={styles.formField}>
-        <label htmlFor="fullName">Your name:</label>
-        <input
-          id="fullName"
-          type="text"
-          value={fullName}
-          onChange={(event) => dispatch({ type: "setFullName", payload: event.target.value })}
-        ></input>
-      </div>
+    <div className={styles.modal}>
+      <div className={styles.modal__window}>
+        <div className={styles.formField}>
+          <label htmlFor="fullName">Login (name):</label>
+          <input
+            id="fullName"
+            type="text"
+            value={fullName}
+            onChange={(event) => dispatch({ type: "setFullName", payload: event.target.value })}
+          ></input>
+        </div>
 
-      <div className={styles.formField}>
-        <label htmlFor="fullName">E-mail:</label>
-        <input
-          id="fullName"
-          type="text"
-          value={mail}
-          onChange={(event) => dispatch({ type: "setMail", payload: event.target.value })}
-        ></input>
-      </div>
+        <div className={styles.formField}>
+          <label htmlFor="fullName">E-mail:</label>
+          <input
+            id="fullName"
+            type="text"
+            value={mail}
+            onChange={(event) => dispatch({ type: "setMail", payload: event.target.value })}
+          ></input>
+        </div>
 
-      <div className={styles.modalButtons}>
-        <Button onClick={fullName.length && mail.length ? onLogin : () => {}} size="s">
-          OK
-        </Button>
-        <Button onClick={onClose} size="s">
-          Cancel
-        </Button>
+        <div className={styles.modalButtons}>
+          <Button
+            onClick={() => {
+              fullName ? onLogin(form) : alert("Enter your name");
+            }}
+            size="m"
+          >
+            OK
+          </Button>
+          <Button onClick={onClose} size="m">
+            Cancel
+          </Button>
+        </div>
       </div>
     </div>
   );

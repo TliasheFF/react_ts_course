@@ -1,24 +1,42 @@
-.root {
+.modal {
     position: fixed;
-    top: 65%;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(124, 124, 124, 0.767);
+}
+
+.modal__window {
+    position: absolute;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    border-radius: 5px;
-    padding: 5px;
-    box-shadow: 2px 2px 5px gray;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    padding: 20px;
     background: white;
 }
 
 .formField {
     display: flex;
     justify-content: space-between;
-    gap: 5px;
+    align-items: center;
+    font-size: 20px;
+    gap: 10px;
     padding-top: 5px;
+
+    &>input {
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 2px 5px;
+        height: 20px;
+        font-size: 16px;
+    }
 }
 
 .modalButtons {
     display: flex;
     justify-content: center;
     gap: 10px;
-    padding-top: 10px;
+    padding-top: 25px;
 }
