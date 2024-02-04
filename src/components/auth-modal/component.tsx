@@ -36,16 +36,23 @@ export const AuthModal: FC<Props> = ({ onLogin, onClose }) => {
   const [form, dispatch] = useReducer(reducer, USER_INITIAL_VALUES);
   const { fullName, mail } = form;
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter") {
+      fullName && mail ? onLogin(form) : alert("Enter your name and e-mail");
+    }
+  };
+
   return (
     <div className={styles.modal}>
       <div className={styles.modal__window}>
         <div className={styles.formField}>
-          <label htmlFor="fullName">Login (name):</label>
+          <label htmlFor="fullName">Name:</label>
           <input
             id="fullName"
             type="text"
             value={fullName}
             onChange={(event) => dispatch({ type: "setFullName", payload: event.target.value })}
+            onKeyDown={handleKeyDown}
           ></input>
         </div>
 
@@ -56,13 +63,15 @@ export const AuthModal: FC<Props> = ({ onLogin, onClose }) => {
             type="text"
             value={mail}
             onChange={(event) => dispatch({ type: "setMail", payload: event.target.value })}
+            onKeyDown={handleKeyDown}
           ></input>
         </div>
 
         <div className={styles.modalButtons}>
           <Button
+            disabled={!fullName || !mail}
             onClick={() => {
-              fullName ? onLogin(form) : alert("Enter your name");
+              fullName && mail ? onLogin(form) : alert("Enter your name and e-mail");
             }}
             size="m"
           >

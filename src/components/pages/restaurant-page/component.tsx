@@ -6,7 +6,7 @@ import { TRestaurant } from "../../../constants/mocks-types";
 import styles from "./styles.module.scss";
 
 export const RestaurantPage: FC = () => {
-  const [activeRestaurantId, setActiveRestaurantId] = useState(restaurants[0].id);
+  const [activeRestaurantId, setActiveRestaurantId] = useState<TRestaurant["id"]>(restaurants[0].id);
 
   const activeRestaurant: TRestaurant | undefined = restaurants.find((restaurant) => restaurant.id === activeRestaurantId);
 
