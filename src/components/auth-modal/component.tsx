@@ -51,6 +51,7 @@ export const AuthModal: FC<Props> = ({ onLogin, onClose }) => {
             id="fullName"
             type="text"
             value={fullName}
+            autoFocus
             onChange={(event) => dispatch({ type: "setFullName", payload: event.target.value })}
             onKeyDown={handleKeyDown}
           ></input>
