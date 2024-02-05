@@ -1,4 +1,9 @@
 import React from "react";
-import { AuthUser } from "../../constants/auth-user";
+import { AuthUser } from "../../constants/auth-user-types";
 
-export const UserContext = React.createContext<AuthUser>({fullName: "", mail: ""});
+export const UserContext = React.createContext<AuthUser>({
+    user: "",
+    setUser: () => {},
+    showModal: false,
+    setShowModal: () => {},
+});

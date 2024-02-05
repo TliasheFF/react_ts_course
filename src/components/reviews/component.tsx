@@ -4,14 +4,14 @@ import { Review } from "../review/component";
 import { ReviewForm } from "../review-form/component";
 import styles from "./styles.module.scss";
 import { UserContext } from "../contexts/user";
-import { AuthUsers } from "../../constants/auth-user";
+import { AuthUser } from "../../constants/auth-user-types";
 
 interface Props {
   reviews: TReviews;
 }
 
 export const Reviews: FC<Props> = ({ reviews }) => {
-  const { fullName } = useContext<AuthUsers>(UserContext);
+  const { user } = useContext<AuthUser>(UserContext);
 
   return (
     <div>
@@ -22,7 +22,7 @@ export const Reviews: FC<Props> = ({ reviews }) => {
           </li>
         ))}
       </ul>
-      {fullName && (
+      {user && (
         <div>
           <hr />
           <ReviewForm className={styles.review_form} />

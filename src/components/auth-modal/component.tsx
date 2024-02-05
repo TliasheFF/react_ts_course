@@ -2,7 +2,6 @@ import { FC, useReducer } from "react";
 import styles from "./styles.module.scss";
 import { Button } from "../button/component";
 import { AuthAction, UserInitialValue } from "../../constants/auth_reducer_types";
-import { AuthUser } from "../../constants/auth-user";
 
 const USER_INITIAL_VALUES: UserInitialValue = {
   fullName: "",
@@ -28,7 +27,7 @@ const reducer = (state: UserInitialValue, { type, payload }: AuthAction): UserIn
 };
 
 type Props = {
-  onLogin: (authUser: AuthUser) => void;
+  onLogin: (authUser: string) => void;
   onClose: () => void;
 };
 
@@ -36,9 +35,9 @@ export const AuthModal: FC<Props> = ({ onLogin, onClose }) => {
   const [form, dispatch] = useReducer(reducer, USER_INITIAL_VALUES);
   const { fullName, mail } = form;
 
-  const handleKeyDown = (event: React.KeyboardEvent) => {
+  const handleKeyDownEnter = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
-      fullName && mail ? onLogin(form) : alert("Enter your name and e-mail");
+      fullName && mail ? onLogin(fullName) : alert("Enter your name and e-mail");
     }
   };
 
@@ -53,7 +52,7 @@ export const AuthModal: FC<Props> = ({ onLogin, onClose }) => {
             value={fullName}
             autoFocus
             onChange={(event) => dispatch({ type: "setFullName", payload: event.target.value })}
-            onKeyDown={handleKeyDown}
+            onKeyDown={handleKeyDownEnter}
           ></input>
         </div>
 
@@ -64,7 +63,7 @@ export const AuthModal: FC<Props> = ({ onLogin, onClose }) => {
             type="text"
             value={mail}
             onChange={(event) => dispatch({ type: "setMail", payload: event.target.value })}
-            onKeyDown={handleKeyDown}
+            onKeyDown={handleKeyDownEnter}
           ></input>
         </div>
 
@@ -72,7 +71,7 @@ export const AuthModal: FC<Props> = ({ onLogin, onClose }) => {
           <Button
             disabled={!fullName || !mail}
             onClick={() => {
-              fullName && mail ? onLogin(form) : alert("Enter your name and e-mail");
+              fullName && mail ? onLogin(form.fullName) : alert("Enter your name and e-mail");
             }}
             size="m"
           >

@@ -1,26 +1,23 @@
 import { FC, useContext } from "react";
 import { Button } from "../button/component";
-import { ModalContext } from "../contexts/modal";
 import styles from "./styles.module.scss";
 import { UserContext } from "../contexts/user";
-import { USER_INITIAL_STATE } from "../../constants/auth-user";
 
 export const LoginLogout: FC = () => {
-  const { showModal, setShowModal, setUser } = useContext(ModalContext);
-  const { fullName } = useContext(UserContext);
+  const { user, setUser, showModal, setShowModal } = useContext(UserContext);
 
   return (
     <div className={styles.root}>
-      {!fullName && (
+      {!user && (
         <Button onClick={() => setShowModal(!showModal)} size="m">
           Login
         </Button>
       )}
 
-      {fullName && (
+      {user && (
         <div className={styles.logout}>
-          <p className={styles.userName}>{fullName}</p>
-          <Button onClick={() => setUser(USER_INITIAL_STATE)} size="m">
+          <p className={styles.userName}>{user}</p>
+          <Button onClick={() => setUser("")} size="m">
             Logout
           </Button>
         </div>
