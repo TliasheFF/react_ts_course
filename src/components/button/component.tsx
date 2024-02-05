@@ -1,10 +1,10 @@
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
 import { Size } from "../../constants/sizes";
 
 type Props = {
-  children: ReactNode;
+  children: string;
   onClick: () => void;
   className?: string;
   disabled?: boolean;
