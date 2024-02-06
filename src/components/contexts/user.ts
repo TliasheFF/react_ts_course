@@ -4,6 +4,4 @@ import { AuthUser } from "../../constants/auth-user-types";
 export const UserContext = React.createContext<AuthUser>({
     user: "",
     setUser: () => {},
-    showModal: false,
-    setShowModal: () => {},
 });

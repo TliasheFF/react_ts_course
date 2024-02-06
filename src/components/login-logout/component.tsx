@@ -1,10 +1,12 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useState } from "react";
 import { Button } from "../button/component";
 import styles from "./styles.module.scss";
 import { UserContext } from "../contexts/user";
+import { Modal } from "../modal/component";
 
 export const LoginLogout: FC = () => {
-  const { user, setUser, showModal, setShowModal } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   return (
     <div className={styles.root}>
@@ -22,6 +24,8 @@ export const LoginLogout: FC = () => {
           </Button>
         </div>
       )}
+
+      <Modal state={showModal} setState={setShowModal} />
     </div>
   );
 };
