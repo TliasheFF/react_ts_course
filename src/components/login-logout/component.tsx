@@ -1,7 +1,7 @@
 import { FC, useContext, useState } from "react";
 import { Button } from "../button/component";
 import styles from "./styles.module.scss";
-import { UserContext } from "../contexts/user";
+import { UserContext } from "../../contexts/user";
 import { Modal } from "../modal/component";
 
 export const LoginLogout: FC = () => {

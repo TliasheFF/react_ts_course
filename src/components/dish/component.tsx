@@ -1,15 +1,18 @@
 import { FC, useState } from "react";
-import { TMenuItems } from "../../constants/mocks-types";
 import { Button } from "../button/component";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux";
+import { selectDishById } from "../../redux/entities/dish/selectors";
 
 interface Props {
-  dish: TMenuItems;
+  dishId: string;
   className?: string;
 }
 
-export const Dish: FC<Props> = ({ dish, className }) => {
+export const Dish: FC<Props> = ({ dishId, className }) => {
+  const dish = useSelector((state: RootState) => selectDishById(state, dishId));
   const [count, setCount] = useState<number>(0);
 
   return (

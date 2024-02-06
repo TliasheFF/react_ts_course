@@ -1,7 +1,7 @@
 import { FC, useContext } from "react";
 import { createPortal } from "react-dom";
 import { AuthModal } from "../auth-form/component";
-import { UserContext } from "../contexts/user";
+import { UserContext } from "../../contexts/user";
 
 type Props = {
   state: boolean;

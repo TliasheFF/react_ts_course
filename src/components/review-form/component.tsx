@@ -2,7 +2,7 @@ import { FC, useContext, useReducer } from "react";
 import styles from "./styles.module.scss";
 import { InitialValues, ReviewFormAction } from "../../constants/restaurant-reducer-types";
 import classNames from "classnames";
-import { UserContext } from "../contexts/user";
+import { UserContext } from "../../contexts/user";
 import { AuthUser } from "../../constants/auth-user-types";
 
 const INITIAL_VALUES: InitialValues = {

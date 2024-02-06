@@ -1,20 +1,19 @@
 import { FC } from "react";
-import { TMenu } from "../../constants/mocks-types";
 import { Dish } from "../dish/component";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
 
 interface Props {
-  menu: TMenu;
+  menuIds: string[];
   className?: string;
 }
 
-export const Menu: FC<Props> = ({ menu, className }) => {
+export const Menu: FC<Props> = ({ menuIds, className }) => {
   return (
     <ul className={classNames(className)}>
-      {menu.map((dish) => (
-        <li key={dish.id}>
-          <Dish className={styles.dishes} dish={dish} />
+      {menuIds.map((id) => (
+        <li key={id}>
+          <Dish className={styles.dishes} dishId={id} />
         </li>
       ))}
     </ul>
