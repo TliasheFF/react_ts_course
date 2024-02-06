@@ -11,10 +11,13 @@ interface Props {
 
 export const Layout: FC<Props> = ({ children, className }) => {
   return (
-    <div className={styles.root}>
-      <Header />
-      <div className={classNames(className)}>{children}</div>
-      <Footer />
-    </div>
+    <>
+      <div className={styles.root}>
+        <Header />
+        <div className={classNames(className)}>{children}</div>
+        <Footer />
+      </div>
+      <div id="modal-container" />
+    </>
   );
 };
