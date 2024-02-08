@@ -1,19 +1,17 @@
 import { FC, useState } from "react";
-import { restaurants } from "../../../constants/mocks";
 import { RestaurantTabs } from "../../restaurant-tabs/component";
-import { Restaurant } from "../../restaurant/component";
-import { TRestaurant } from "../../../constants/mocks-types";
 import styles from "./styles.module.scss";
+import { Restaurant } from "../../restaurant/component";
 
 export const RestaurantPage: FC = () => {
-  const [activeRestaurantId, setActiveRestaurantId] = useState<TRestaurant["id"]>(restaurants[0].id);
-
-  const activeRestaurant: TRestaurant | undefined = restaurants.find((restaurant) => restaurant.id === activeRestaurantId);
+  const [activeRestaurantId, setActiveRestaurantId] = useState<string | undefined>();
 
   return (
     <div className={styles.root}>
-      <RestaurantTabs restaurants={restaurants} onSelect={setActiveRestaurantId}></RestaurantTabs>
-      {activeRestaurant && <Restaurant restaurant={activeRestaurant} className={styles.restaurant} key={activeRestaurant.id} />}
+      <RestaurantTabs onSelect={setActiveRestaurantId}></RestaurantTabs>
+      {activeRestaurantId && (
+        <Restaurant restaurantId={activeRestaurantId} className={styles.restaurant} key={activeRestaurantId} />
+      )}
     </div>
   );
 };

@@ -1,18 +1,20 @@
 import { FC } from "react";
-import { TRestaurants } from "../../constants/mocks-types";
 import { Tab } from "../tab/component";
 import styles from "./styles.module.scss";
+import { useSelector } from "react-redux";
+import { selectRestaurantIds } from "../../redux/entities/reataurant/selectors";
 
 type Props = {
-  restaurants: TRestaurants;
-  onSelect: (value: string) => void;
+  onSelect: (id: string) => void;
 };
 
-export const RestaurantTabs: FC<Props> = ({ restaurants, onSelect }) => {
+export const RestaurantTabs: FC<Props> = ({ onSelect }) => {
+  const restaurantIds = useSelector(selectRestaurantIds);
+
   return (
     <div className={styles.root}>
-      {restaurants.map((restaurant) => (
-        <Tab key={restaurant.id} title={restaurant.name} onClick={() => onSelect(restaurant.id)} />
+      {restaurantIds.map((id) => (
+        <Tab key={id} id={id} onClick={() => onSelect(id)} />
       ))}
     </div>
   );

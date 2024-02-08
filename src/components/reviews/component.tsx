@@ -1,24 +1,23 @@
 import { FC, useContext } from "react";
-import { TReviews } from "../../constants/mocks-types";
 import { Review } from "../review/component";
 import { ReviewForm } from "../review-form/component";
 import styles from "./styles.module.scss";
-import { UserContext } from "../contexts/user";
+import { UserContext } from "../../contexts/user";
 import { AuthUser } from "../../constants/auth-user-types";
 
 interface Props {
-  reviews: TReviews;
+  reviewsIds: string[];
 }
 
-export const Reviews: FC<Props> = ({ reviews }) => {
+export const Reviews: FC<Props> = ({ reviewsIds }) => {
   const { user } = useContext<AuthUser>(UserContext);
 
   return (
     <div>
       <ul>
-        {reviews.map((review) => (
-          <li key={review.id}>
-            <Review review={review} />
+        {reviewsIds.map((id) => (
+          <li key={id}>
+            <Review reviewId={id} />
           </li>
         ))}
       </ul>

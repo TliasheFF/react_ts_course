@@ -1,11 +1,15 @@
 import { FC } from "react";
-import { TReview } from "../../constants/mocks-types";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux";
+import { selectReviewById } from "../../redux/entities/review/selectors";
 
 interface Props {
-  review: TReview;
+  reviewId: string;
 }
 
-export const Review: FC<Props> = ({ review }) => {
+export const Review: FC<Props> = ({ reviewId }) => {
+  const review = useSelector((state: RootState) => selectReviewById(state, reviewId));
+
   return (
     <div>
       <div>{review.text}</div>
